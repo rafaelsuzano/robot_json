@@ -1,0 +1,16 @@
+[
+  {
+    "scenario": "Login com credenciais válidas",
+    "email": "rafael@suzano.com",
+    "password": "teste",
+    "expected_status": 200,
+    "expected_message": "Login realizado com sucesso"
+  },
+  {
+    "scenario": "Login com senha incorreta",
+    "username": "usuario_valido",
+    "password": "senha_errada",
+    "expected_status": 401,
+    "expected_message": "Credenciais inválidas"
+  }
+]
