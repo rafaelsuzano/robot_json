@@ -1,175 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.12.3 on linux)" generated="2025-11-06T11:31:01.049800" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.12.3 on linux)" generated="2025-11-06T14:20:04.442162" rpa="false" schemaversion="5">
 <suite id="s1" name="Tests" source="/home/eng-rafael-suzano-cruz/Projetos/robot_json/tests">
 <suite id="s1-s1" name="Login Test" source="/home/eng-rafael-suzano-cruz/Projetos/robot_json/tests/login_test.robot">
-<test id="s1-s1-t1" name="Testes de Login via API" line="9">
-<kw name="Ler Dados De Login Do Arquivo" owner="keywords">
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n📂 Lendo arquivo JSON: ${caminho}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.157937" elapsed="0.000174"/>
+<test id="s1-s1-t1" name="${cenarios}=" line="14">
+<kw name="Executar Login">
+<msg time="2025-11-06T14:20:04.516045" level="FAIL">Keyword 'Executar Login' expected 4 arguments, got 2.</msg>
+<arg>Ler Dados De Login Do Arquivo</arg>
+<arg>${DATA_FILE}</arg>
+<status status="FAIL" start="2025-11-06T14:20:04.515832" elapsed="0.000277">Keyword 'Executar Login' expected 4 arguments, got 2.</status>
 </kw>
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2025-11-06T11:31:01.158412" level="INFO" html="true">Getting file '&lt;a href="file:///home/eng-rafael-suzano-cruz/Projetos/robot_json/data/logins.json"&gt;/home/eng-rafael-suzano-cruz/Projetos/robot_json/data/logins.json&lt;/a&gt;'.</msg>
-<msg time="2025-11-06T11:31:01.158530" level="INFO">${conteudo} = [
-  {
-    "scenario": "Login com credenciais válidas",
-    "email": "rafael@suzano.com",
-    "password": "teste",
-    "expected_status": 200,
-    "expected_message": "Login realizado com sucesso"
-  },...</msg>
-<var>${conteudo}</var>
-<arg>${caminho}</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.158223" elapsed="0.000326"/>
+<status status="FAIL" start="2025-11-06T14:20:04.515241" elapsed="0.001068">Keyword 'Executar Login' expected 4 arguments, got 2.</status>
+</test>
+<test id="s1-s1-t2" name="FOR" line="15">
+<kw name="Executar Login">
+<msg time="2025-11-06T14:20:04.517097" level="FAIL">Variable '${login}' not found. Did you mean:
+    ${LOG_FILE}</msg>
+<arg>${login}</arg>
+<arg>IN</arg>
+<arg>@{cenarios}</arg>
+<status status="FAIL" start="2025-11-06T14:20:04.516692" elapsed="0.000434">Variable '${login}' not found. Did you mean:
+    ${LOG_FILE}</status>
 </kw>
-<kw name="Convert String To Json" owner="JSONLibrary">
-<msg time="2025-11-06T11:31:01.158745" level="INFO">${json} = [{'scenario': 'Login com credenciais válidas', 'email': 'rafael@suzano.com', 'password': 'teste', 'expected_status': 200, 'expected_message': 'Login realizado com sucesso'}, {'scenario': 'Login com se...</msg>
-<var>${json}</var>
-<arg>${conteudo}</arg>
-<doc>Convert String to JSON object</doc>
-<status status="PASS" start="2025-11-06T11:31:01.158625" elapsed="0.000138"/>
-</kw>
-<return>
-<value>${json}</value>
-<status status="PASS" start="2025-11-06T11:31:01.158797" elapsed="0.000038"/>
-</return>
-<msg time="2025-11-06T11:31:01.158943" level="INFO">${logins} = [{'scenario': 'Login com credenciais válidas', 'email': 'rafael@suzano.com', 'password': 'teste', 'expected_status': 200, 'expected_message': 'Login realizado com sucesso'}, {'scenario': 'Login com se...</msg>
-<var>${logins}</var>
-<arg>data/logins.json</arg>
-<status status="PASS" start="2025-11-06T11:31:01.157501" elapsed="0.001457"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n🚀 Executando cenário: ${login["scenario"]}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.159196" elapsed="0.000310"/>
-</kw>
-<kw name="Realizar Login E Validar Resultado" owner="keywords">
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n🚀 Testando login com e-mail: ${email}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.160424" elapsed="0.000100"/>
-</kw>
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-11-06T11:31:01.160715" level="INFO">Creating Session using : alias=api, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>api</arg>
-<arg>${BASE_URL}</arg>
-<arg>verify=False</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-11-06T11:31:01.160601" elapsed="0.000237"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-11-06T11:31:01.161142" level="INFO">${body} = {'email': 'rafael@suzano.com', 'password': 'teste'}</msg>
-<var>${body}</var>
-<arg>email=${email}</arg>
-<arg>password=${senha}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.160933" elapsed="0.000225"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-11-06T11:31:01.524143" level="INFO">POST Request : url=https://serverest.dev/login 
- path_url=/login 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '51', 'Content-Type': 'application/json'} 
- body=b'{"email": "rafael@suzano.com", "password": "teste"}' 
- </msg>
-<msg time="2025-11-06T11:31:01.524359" level="INFO">POST Response : url=https://serverest.dev/login 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '7b3e907d4e7a37c7001a539399532672;o=1', 'date': 'Thu, 06 Nov 2025 14:31:01 GMT', 'server': 'Google Frontend', 'Content-Length': '271'} 
- body={
-    "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmFlbEBzdXphbm8uY29tIiwicGFzc3dvcmQiOiJ0ZXN0ZSIsImlhdCI6MTc2MjQzOTQ2MSwiZXhwIjoxNzYyNDQwMDYxfQ._Erg9vfUWLeK__7i76NgB1z5GJU5loI24iFQkrj2ugQ"
-} 
- </msg>
-<msg time="2025-11-06T11:31:01.524492" level="INFO">/home/eng-rafael-suzano-cruz/Projetos/robot_json/env/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2025-11-06T11:31:01.524765" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>api</arg>
-<arg>${LOGIN_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.161217" elapsed="0.363600"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>🔸 Status code: ${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.525170" elapsed="0.001135"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>🔸 Resposta: ${response.text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.526558" elapsed="0.000945"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>${status_esperado}</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.527722" elapsed="0.000900"/>
-</kw>
-<kw name="Convert String To Json" owner="JSONLibrary">
-<msg time="2025-11-06T11:31:01.529966" level="INFO">${json_body} = {'message': 'Login realizado com sucesso', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhZmFlbEBzdXphbm8uY29tIiwicGFzc3dvcmQiOiJ0ZXN0ZSIsImlhdCI6MTc2MjQzOTQ2MSwiZXhwIjo...</msg>
-<var>${json_body}</var>
-<arg>${response.text}</arg>
-<doc>Convert String to JSON object</doc>
-<status status="PASS" start="2025-11-06T11:31:01.528906" elapsed="0.001111"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${json_body["message"]}</arg>
-<arg>${mensagem_esperada}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.530198" elapsed="0.000709"/>
-</kw>
-<arg>${login["email"]}</arg>
+<kw name="Executar Login">
+<msg time="2025-11-06T14:20:04.517688" level="FAIL">Resolving variable '${login["scenario"]}' failed: Variable '${login}' not found. Did you mean:
+    ${LOG_FILE}</msg>
+<arg>${login["scenario"]}</arg>
+<arg>${login["username"]}</arg>
 <arg>${login["password"]}</arg>
 <arg>${login["expected_status"]}</arg>
 <arg>${login["expected_message"]}</arg>
-<status status="PASS" start="2025-11-06T11:31:01.159626" elapsed="0.371381"/>
+<status status="FAIL" start="2025-11-06T14:20:04.517242" elapsed="0.000470">Resolving variable '${login["scenario"]}' failed: Variable '${login}' not found. Did you mean:
+    ${LOG_FILE}</status>
 </kw>
-<var name="${login}">{'scenario': 'Login com credenciais válidas', 'email': 'rafael@suzano.com', 'password': 'teste', 'expected_status': 200, 'expected_message': 'Login realizado com sucesso'}</var>
-<status status="PASS" start="2025-11-06T11:31:01.159140" elapsed="0.371917"/>
-</iter>
-<iter>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n🚀 Executando cenário: ${login["scenario"]}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-11-06T11:31:01.531475" elapsed="0.000838"/>
-</kw>
-<kw name="Realizar Login E Validar Resultado" owner="keywords">
-<msg time="2025-11-06T11:31:01.533522" level="FAIL">Resolving variable '${login["email"]}' failed: KeyError: 'email'</msg>
-<arg>${login["email"]}</arg>
-<arg>${login["password"]}</arg>
-<arg>${login["expected_status"]}</arg>
-<arg>${login["expected_message"]}</arg>
-<status status="FAIL" start="2025-11-06T11:31:01.532726" elapsed="0.000874">Resolving variable '${login["email"]}' failed: KeyError: 'email'</status>
-</kw>
-<var name="${login}">{'scenario': 'Login com senha incorreta', 'username': 'usuario_valido', 'password': 'senha_errada', 'expected_status': 401, 'expected_message': 'Credenciais inválidas'}</var>
-<status status="FAIL" start="2025-11-06T11:31:01.531296" elapsed="0.002442">Resolving variable '${login["email"]}' failed: KeyError: 'email'</status>
-</iter>
-<var>${login}</var>
-<value>@{logins}</value>
-<status status="FAIL" start="2025-11-06T11:31:01.159031" elapsed="0.374822">Resolving variable '${login["email"]}' failed: KeyError: 'email'</status>
-</for>
-<status status="FAIL" start="2025-11-06T11:31:01.156998" elapsed="0.377161">Resolving variable '${login["email"]}' failed: KeyError: 'email'</status>
+<status status="FAIL" start="2025-11-06T14:20:04.516462" elapsed="0.001376">Several failures occurred:
+
+1) Variable '${login}' not found. Did you mean:
+    ${LOG_FILE}
+
+2) Resolving variable '${login["scenario"]}' failed: Variable '${login}' not found. Did you mean:
+    ${LOG_FILE}</status>
+</test>
+<test id="s1-s1-t3" name="END" line="17">
+<status status="FAIL" start="2025-11-06T14:20:04.517965" elapsed="0.000252">Test cannot be empty.</status>
 </test>
 <doc>Teste de login dinâmico usando dados do JSON e RequestsLibrary</doc>
-<status status="FAIL" start="2025-11-06T11:31:01.068850" elapsed="0.465882"/>
+<status status="FAIL" start="2025-11-06T14:20:04.459326" elapsed="0.059070"/>
 </suite>
-<status status="FAIL" start="2025-11-06T11:31:01.050493" elapsed="0.484931"/>
+<status status="FAIL" start="2025-11-06T14:20:04.442825" elapsed="0.075882"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Tests" id="s1" pass="0" fail="1" skip="0">Tests</stat>
-<stat name="Login Test" id="s1-s1" pass="0" fail="1" skip="0">Tests.Login Test</stat>
+<stat name="Tests" id="s1" pass="0" fail="3" skip="0">Tests</stat>
+<stat name="Login Test" id="s1-s1" pass="0" fail="3" skip="0">Tests.Login Test</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-11-06T14:20:04.514523" level="ERROR">Error in file '/home/eng-rafael-suzano-cruz/Projetos/robot_json/tests/login_test.robot' on line 6: Resource file '../resources/keywords.robot' does not exist.</msg>
 </errors>
 </robot>

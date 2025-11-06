@@ -8,7 +8,7 @@
   },
   {
     "scenario": "Login com senha incorreta",
-    "username": "usuario_valido",
+    "email": "usuario_valido",
     "password": "senha_errada",
     "expected_status": 401,
     "expected_message": "Credenciais inválidas"
