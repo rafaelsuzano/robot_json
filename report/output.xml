@@ -1,88 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.12.3 on linux)" generated="2025-11-07T10:22:57.810336" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.12.3 on linux)" generated="2025-11-07T10:53:35.893792" rpa="false" schemaversion="5">
 <suite id="s1" name="Tests" source="/home/eng-rafael-suzano-cruz/Projetos/robot_json/tests">
 <suite id="s1-s1" name="Login Test" source="/home/eng-rafael-suzano-cruz/Projetos/robot_json/tests/login_test.robot">
-<test id="s1-s1-t1" name="Login Dinâmico" line="9">
-<kw name="Ler Dados De Login Do Arquivo" owner="keywords">
-<kw name="Log To Console" owner="BuiltIn">
-<arg>\n📂 Lendo arquivo JSON: ${caminho}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-11-07T10:22:57.909247" elapsed="0.000180"/>
-</kw>
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2025-11-07T10:22:57.909670" level="INFO" html="true">Getting file '&lt;a href="file:///home/eng-rafael-suzano-cruz/Projetos/data/logins.json"&gt;/home/eng-rafael-suzano-cruz/Projetos/data/logins.json&lt;/a&gt;'.</msg>
-<msg time="2025-11-07T10:22:57.909842" level="FAIL">FileNotFoundError: [Errno 2] No such file or directory: '/home/eng-rafael-suzano-cruz/Projetos/data/logins.json'</msg>
-<var>${conteudo}</var>
-<arg>${caminho}</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="FAIL" start="2025-11-07T10:22:57.909547" elapsed="0.000397">FileNotFoundError: [Errno 2] No such file or directory: '/home/eng-rafael-suzano-cruz/Projetos/data/logins.json'</status>
-</kw>
-<kw name="Convert String To Json" owner="JSONLibrary">
-<var>${json}</var>
-<arg>${conteudo}</arg>
-<doc>Convert String to JSON object</doc>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910031" elapsed="0.000014"/>
-</kw>
-<return>
-<value>${json}</value>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910087" elapsed="0.000017"/>
-</return>
-<var>${dados}</var>
-<arg>${CAMINHO_JSON}</arg>
-<status status="FAIL" start="2025-11-07T10:22:57.908726" elapsed="0.001458">FileNotFoundError: [Errno 2] No such file or directory: '/home/eng-rafael-suzano-cruz/Projetos/data/logins.json'</status>
-</kw>
-<kw name="Get Value From Json" owner="JSONLibrary">
-<var>${cenarios}</var>
-<arg>${dados}</arg>
-<arg>$.logins</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910301" elapsed="0.000014"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Set Variable" owner="BuiltIn">
-<var>${email}</var>
-<arg>${cenario["email"]}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910496" elapsed="0.000013"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<var>${senha}</var>
-<arg>${cenario["senha"]}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910566" elapsed="0.000012"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<var>${status}</var>
-<arg>${cenario["status_esperado"]}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910629" elapsed="0.000010"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<var>${mensagem}</var>
-<arg>${cenario["mensagem_esperada"]}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910689" elapsed="0.000011"/>
-</kw>
-<kw name="Realizar Login E Validar Resultado" owner="keywords">
-<arg>${email}</arg>
-<arg>${senha}</arg>
-<arg>${status}</arg>
-<arg>${mensagem}</arg>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910806" elapsed="0.000016"/>
-</kw>
-<var name="${cenario}"/>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910444" elapsed="0.000400"/>
-</iter>
-<var>${cenario}</var>
-<value>@{cenarios}</value>
-<status status="NOT RUN" start="2025-11-07T10:22:57.910377" elapsed="0.000486"/>
-</for>
-<status status="FAIL" start="2025-11-07T10:22:57.908188" elapsed="0.002792">FileNotFoundError: [Errno 2] No such file or directory: '/home/eng-rafael-suzano-cruz/Projetos/data/logins.json'</status>
+<test id="s1-s1-t1" name="Cenários de Login" line="11">
+<doc>Executa todos os cenários de login definidos no arquivo JSON</doc>
+<status status="FAIL" start="2025-11-07T10:53:35.994492" elapsed="0.000632">Test cannot be empty.</status>
 </test>
-<status status="FAIL" start="2025-11-07T10:22:57.825572" elapsed="0.085672"/>
+<status status="FAIL" start="2025-11-07T10:53:35.909256" elapsed="0.086109"/>
 </suite>
-<status status="FAIL" start="2025-11-07T10:22:57.811024" elapsed="0.100490"/>
+<status status="FAIL" start="2025-11-07T10:53:35.894462" elapsed="0.101212"/>
 </suite>
 <statistics>
 <total>
@@ -96,5 +22,11 @@
 </suite>
 </statistics>
 <errors>
+<msg time="2025-11-07T10:53:35.992437" level="WARN">Error in file '/home/eng-rafael-suzano-cruz/Projetos/robot_json/resources/keywords.robot' on line 22: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-11-07T10:53:35.993510" level="ERROR">[ DataDriver ] Error in robot file:
+  File "/home/eng-rafael-suzano-cruz/Projetos/robot_json/tests/login_test.robot", line 0</msg>
+<msg time="2025-11-07T10:53:35.993564" level="ERROR">In source file:
+  File "data/login_data.json", line 0</msg>
+<msg time="2025-11-07T10:53:35.994359" level="ERROR">Calling method '_start_suite' of listener 'DataDriver' failed: FileNotFoundError: File attribute was not a full path. Tried to find /home/eng-rafael-suzano-cruz/Projetos/robot_json/tests/data/login_data.json but file does not exist.</msg>
 </errors>
 </robot>

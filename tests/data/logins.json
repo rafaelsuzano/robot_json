@@ -1,7 +1,7 @@
 [
   {
     "scenario": "Login com credenciais válidas",
-    "email": "rafael@suzano.com",
+    "email": "fulano@qa.com",
     "password": "teste",
     "expected_status": 200,
     "expected_message": "Login realizado com sucesso"
@@ -11,6 +11,6 @@
     "email": "usuario_valido",
     "password": "senha_errada",
     "expected_status": 401,
-    "expected_message": "Credenciais inválidas"
+    "expected_message": "Email e/ou senha inválidos"
   }
 ]
