@@ -1,22 +1,19 @@
 *** Settings ***
-Documentation     Teste de login dinâmico usando dados do JSON e RequestsLibrary
-Library           OperatingSystem
-Library           JSONLibrary
-Library           Collections
-Resource          ../resources/keywords.robot
-Test Template     Executar Login
+Library    JSONLibrary
+Resource   ../resources/keywords.robot
 
 *** Variables ***
-${DATA_FILE}      ../data/logins.json
+${CAMINHO_JSON}    ../data/logins.json
 
 *** Test Cases ***
-# A lista de testes será gerada dinamicamente
-${cenarios}=    Ler Dados De Login Do Arquivo    ${DATA_FILE}
-FOR    ${login}    IN    @{cenarios}
-    ${login["scenario"]}    ${login["username"]}    ${login["password"]}    ${login["expected_status"]}    ${login["expected_message"]}
-END
+Login Dinâmico
+    ${dados}=    Ler Dados De Login Do Arquivo    ${CAMINHO_JSON}
+    ${cenarios}=    Get Value From Json    ${dados}    $.logins
 
-*** Keywords ***
-Executar Login
-    [Arguments]    ${usuario}    ${senha}    ${status_esperado}    ${mensagem_esperada}
-    Realizar Login E Validar Resultado    ${usuario}    ${senha}    ${status_esperado}    ${mensagem_esperada}
+    FOR    ${cenario}    IN    @{cenarios}
+        ${email}=    Set Variable    ${cenario["email"]}
+        ${senha}=    Set Variable    ${cenario["senha"]}
+        ${status}=    Set Variable    ${cenario["status_esperado"]}
+        ${mensagem}=    Set Variable    ${cenario["mensagem_esperada"]}
+        Realizar Login E Validar Resultado    ${email}    ${senha}    ${status}    ${mensagem}
+    END
