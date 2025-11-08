@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2025-11-07T14:07:57.770698" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Test" source="C:\Users\act.kaique\Downloads\robot_json-main\tests\login_test.robot">
+<test id="s1-t1" name="Login com credenciais válidas" line="8">
+<kw name="Executar Login Com Dados">
+<kw name="Realizar Login E Validar Resultado" owner="keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n🚀 Testando login com e-mail: ${email}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-07T14:07:57.951912" elapsed="0.000198"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-07T14:07:57.952323" level="INFO">Creating Session using : alias=login_api, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>login_api</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-07T14:07:57.952205" elapsed="0.000249"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-07T14:07:57.952715" level="INFO">${body} = {'email': 'fulano@qa.com', 'password': 'teste'}</msg>
+<var>${body}</var>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-07T14:07:57.952525" elapsed="0.000206"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-11-07T14:07:58.639204" level="INFO">POST Request : url=https://serverest.dev/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '47', 'Content-Type': 'application/json'} 
+ body=b'{"email": "fulano@qa.com", "password": "teste"}' 
+ </msg>
+<msg time="2025-11-07T14:07:58.639444" level="INFO">POST Response : url=https://serverest.dev/login 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'e064ef685d9684a64d4547b2d5770a50', 'date': 'Fri, 07 Nov 2025 17:07:58 GMT', 'server': 'Google Frontend', 'Content-Length': '265'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzYyNTM1Mjc4LCJleHAiOjE3NjI1MzU4Nzh9.x574r_qNwHN7VJ5ZJKQiglIi415rR0i_hJsHDMqyqRM"
+} 
+ </msg>
+<msg time="2025-11-07T14:07:58.639548" level="INFO">C:\Users\act.kaique\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-11-07T14:07:58.639981" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>login_api</arg>
+<arg>/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>allow_redirects=True</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-07T14:07:57.952786" elapsed="0.687285"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>${expected_status}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-07T14:07:58.640393" elapsed="0.000971"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2025-11-07T14:07:58.641555" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-11-07T14:07:58.642521" level="INFO">To JSON using : content={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzYyNTM1Mjc4LCJleHAiOjE3NjI1MzU4Nzh9.x574r_qNwHN7VJ5ZJKQiglIi415rR0i_hJsHDMqyqRM"
+} </msg>
+<msg time="2025-11-07T14:07:58.642555" level="INFO">To JSON using : pretty_print=False </msg>
+<msg time="2025-11-07T14:07:58.642623" level="INFO">${json} = {'message': 'Login realizado com sucesso', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzYyNTM1Mjc4LCJleHAiOjE3NjI...</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="PASS" start="2025-11-07T14:07:58.641516" elapsed="0.001130"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${json["message"]}</arg>
+<arg>${expected_message}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-11-07T14:07:58.642774" elapsed="0.000355"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<arg>${expected_status}</arg>
+<arg>${expected_message}</arg>
+<status status="PASS" start="2025-11-07T14:07:57.951510" elapsed="0.691678"/>
+</kw>
+<arg>email=fulano@qa.com</arg>
+<arg>password=teste</arg>
+<arg>expected_status=200</arg>
+<arg>expected_message=Login realizado com sucesso</arg>
+<status status="PASS" start="2025-11-07T14:07:57.951240" elapsed="0.691997"/>
+</kw>
+<status status="PASS" start="2025-11-07T14:07:57.950453" elapsed="0.693034"/>
+</test>
+<test id="s1-t2" name="Login com senha incorreta" line="8">
+<kw name="Executar Login Com Dados">
+<kw name="Realizar Login E Validar Resultado" owner="keywords">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n🚀 Testando login com e-mail: ${email}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-07T14:07:58.644840" elapsed="0.000231"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-07T14:07:58.645229" level="INFO">Creating Session using : alias=login_api, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>login_api</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-07T14:07:58.645130" elapsed="0.000193"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-07T14:07:58.645521" level="INFO">${body} = {'email': 'fulano@qa.com', 'password': 'teste1erradoTeste'}</msg>
+<var>${body}</var>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-07T14:07:58.645388" elapsed="0.000147"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-11-07T14:07:59.054642" level="INFO">POST Request : url=https://serverest.dev/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '59', 'Content-Type': 'application/json'} 
+ body=b'{"email": "fulano@qa.com", "password": "teste1erradoTeste"}' 
+ </msg>
+<msg time="2025-11-07T14:07:59.054794" level="INFO">POST Response : url=https://serverest.dev/login 
+ status=401, reason=Unauthorized 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'e32f56fc3336887286821c1760600e68', 'date': 'Fri, 07 Nov 2025 17:07:58 GMT', 'server': 'Google Frontend', 'Content-Length': '48'} 
+ body={
+    "message": "Email e/ou senha inválidos"
+} 
+ </msg>
+<msg time="2025-11-07T14:07:59.054931" level="INFO">C:\Users\act.kaique\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-11-07T14:07:59.055439" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<var>${response}</var>
+<arg>login_api</arg>
+<arg>/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>allow_redirects=True</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-07T14:07:58.645590" elapsed="0.409905"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>${expected_status}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-07T14:07:59.055718" elapsed="0.000654"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2025-11-07T14:07:59.056549" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-11-07T14:07:59.057554" level="INFO">To JSON using : content={
+    "message": "Email e/ou senha inválidos"
+} </msg>
+<msg time="2025-11-07T14:07:59.057582" level="INFO">To JSON using : pretty_print=False </msg>
+<msg time="2025-11-07T14:07:59.057636" level="INFO">${json} = {'message': 'Email e/ou senha inválidos'}</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="PASS" start="2025-11-07T14:07:59.056522" elapsed="0.001132"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${json["message"]}</arg>
+<arg>${expected_message}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-11-07T14:07:59.057729" elapsed="0.000383"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<arg>${expected_status}</arg>
+<arg>${expected_message}</arg>
+<status status="PASS" start="2025-11-07T14:07:58.644667" elapsed="0.413492"/>
+</kw>
+<arg>email=fulano@qa.com</arg>
+<arg>password=teste1erradoTeste</arg>
+<arg>expected_status=401</arg>
+<arg>expected_message=Email e/ou senha inválidos</arg>
+<status status="PASS" start="2025-11-07T14:07:58.644480" elapsed="0.413710"/>
+</kw>
+<status status="PASS" start="2025-11-07T14:07:58.643862" elapsed="0.414658"/>
+</test>
+<doc>Testes de Login com dados dinâmicos do JSON</doc>
+<status status="PASS" start="2025-11-07T14:07:57.771900" elapsed="1.287428"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Test" id="s1" pass="2" fail="0" skip="0">Login Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-11-07T14:07:58.641555" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2025-11-07T14:07:59.056549" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+</errors>
+</robot>

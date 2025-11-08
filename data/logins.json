@@ -1,0 +1,20 @@
+[
+  {
+    "test_case_name": "Login com credenciais válidas",
+    "arguments": {
+      "${email}": "fulano@qa.com",
+      "${password}": "teste",
+      "${expected_status}": 200,
+      "${expected_message}": "Login realizado com sucesso"
+    }
+  },
+  {
+    "test_case_name": "Login com senha incorreta",
+    "arguments": {
+      "${email}": "fulano@qa.com",
+      "${password}": "teste1erradoTeste",
+      "${expected_status}": 401,
+      "${expected_message}": "Email e/ou senha inválidos"
+    }
+  }
+]

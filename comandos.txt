@@ -1,3 +1,5 @@
 pip install -r requirements.txt
 
 robot --outputdir report tests/
+robot --loglevel WARN --outputdir report tests/
+robot --loglevel NONE --outputdir report tests/
